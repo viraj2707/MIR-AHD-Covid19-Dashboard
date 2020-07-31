@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MIR COID19-Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static "/style.css" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="nouislider.min.css" rel="stylesheet">
+    <script src="nouislider.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="{% static "/map.css" %}"/>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="{% static "/images/logo.png" %}" width="50" height="50">
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active" ><a href="#" id="dashboard-tab" onlclick="changeTab(this)">MIR COVID-19 Dashboard</a></li>
+                    <li><a href="#" id="model-tab" onlclick="changeTab(this)">Epidemic Spread Model</a></li>
+                    <li><a href="#" id="team-tab" onlclick="changeTab(this)">Team</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        <div id="team" class="container">
+            <hr>
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <div class="card card-block">
+                        <img src="{% static "/images/udit.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Udit Bhatia</h2>
+                            <p class="title">Assistant Professor</p>
+                            <p class="title">Civil Engineering</p>
+                            <p>IIT Gandhinagar</p>
+                            <p>bhatia.u@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h2> Network and Dashboard Development Team </h2>
+            <hr>
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <div class="card card-block">
+                        <img src="{% static "/images/rohan.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Rohan Patil</h2>
+                            <p class="title">B. Tech. Junior Undergraduate</p>
+                            <p class="title">Computer Science and Engineering</p>
+                            <p>IIT Gandhinagar</p>
+                            <p>rohan.patil@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card card-block">
+                        <img src="{% static "/images/harsh.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Harsh Patel</h2>
+                            <p class="title">B. Tech. Sophomore</p>
+                            <p class="title">Computer Science and Engineering</p>
+                            <p>IIT Gandhinagar</p>
+                            <p>harsh.patel@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card card-block align-self-center">
+                        <img src="{% static "/images/viraj.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Viraj Shah</h2>
+                            <p class="title">B. Tech. Sophomore</p>
+                            <p class="title">Electrical Engineering<br><br></p>
+                            <p>IIT Gandhinagar</p>
+                            <p>viraj.shah@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card card-block align-self-center">
+                        <img src="{% static "/images/raviraj.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Raviraj Dave</h2>
+                            <p class="title">PhD Student</p>
+                            <p class="title">Civil Engineering<br><br></p>
+                            <p>IIT Gandhinagar</p>
+                            <p>raviraj.dave@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h2> Dynamic Model Team </h2>
+            <hr>
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <div class="card card-block align-self-center">
+                        <img src="{% static "/images/kaushal.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Kaushal <br> Modi</h2>
+                            <p class="title">B. Tech Senior Undergraduate</p>
+                            <p class="title">Mechanical Engineering<br><br></p>
+                            <p>IIT Gandhinagar</p>
+                            <p>kaushal.modi@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card card-block align-self-center">
+                        <img src="{% static "/images/shahzaib.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Shahzaib Khan</h2>
+                            <p class="title">B. Tech Junior Undergraduate</p>
+                            <p class="title">Civil Engineering<br><br></p>
+                            <p>IIT Gandhinagar</p>
+                            <p>shahzaib.khan@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card card-block align-self-center">
+                        <img src="{% static "/images/kamlesh.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Kamlesh Sawadekar</h2>
+                            <p class="title">B. Tech Sophomore</p>
+                            <p class="title">Civil Engineering<br><br></p>
+                            <p>IIT Gandhinagar</p>
+                            <p>kamlesh.arun@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card card-block">
+                        <img src="{% static "/images/ayush.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Ayush Agarwal</h2>
+                            <p class="title">B. Tech. Junior Undergraduate</p>
+                            <p class="title">Computer Science and Engineering</p>
+                            <p>IIT Gandhinagar</p>
+                            <p>aysuh.agarwal@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

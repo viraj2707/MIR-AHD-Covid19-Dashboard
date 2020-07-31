@@ -1,0 +1,18 @@
+{% load static %}
+
+<html>
+<head>
+<link rel="stylesheet" href="l.css">
+<link rel="stylesheet" href="{% static "/l.css" %}"/>
+</head>
+<body>
+    <h1 align = 'center' style="color:white">Login Page</h1>
+    <form>
+		<input name="name" placeholder="Username" class="name" required />
+<!--         <input name="emailaddress" placeholder="Email" class="email" type="email" required /> -->
+        <input name="password" class="password"  placeholder="Password" type="password" minlength="8" required>
+        <a href="/change"><p style="color:white">Change Password</p></a>
+    <input name="submit" class="btn" type="submit" value="Login" />
+</form>
+</body>
+</html>

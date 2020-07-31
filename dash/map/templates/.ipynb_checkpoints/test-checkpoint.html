@@ -1,0 +1,255 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MIR COID19-Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static "/style.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" integrity="sha256-sEGfrwMkIjbgTBwGLVK38BG/XwIiNC/EAG9Rzsfda6A=" crossorigin="anonymous" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+<!--     <link href="nouislider.min.css" rel="stylesheet">
+    <script src="nouislider.min.js"></script>
+     -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="{% static "/map.css" %}"/>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Include this library for mobile touch support  -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+    <script src="{% static "/global.js" %}"></script>
+    <script src="{% static "/helper.js" %}"></script>
+    <script src="{% static "/init.js" %}"></script>
+    
+</head>
+
+<body>
+    <div id="loader" class="center" style="display:none;"></div>
+    <div id="loaded">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="{% static "/images/logo.png" %}" width="50" height="50">
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active" id="dashboard-tab"><a href="#" onclick="changeTab(this)">MIR COVID-19 Dashboard</a></li>
+<!--                     <li  id="model-tab"><a href="#">Epidemic Spread Model</a></li> -->
+                    <li id="team-tab"><a href="#" onclick="changeTab(this)">Team</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+	<script> 
+        $(function xx() {
+		window.city = $( "select" ).val();
+		$( "select" ).change(xx);
+		$( "select" ).change(httpReqGet("https://cors-anywhere.herokuapp.com/https://api.covid19india.org/state_district_wise.json"));})
+
+	function httpReqGet(url){
+  			var xhr = new XMLHttpRequest();
+  			xhr.open("GET", url, true);
+  			xhr.setRequestHeader("Content-Type", "application/json");
+  			xhr.onreadystatechange = function (response) {
+    				if (xhr.readyState === 4 && xhr.status === 200) {
+        			var json = JSON.parse(xhr.responseText);
+				var state = document.getElementById("sta");
+				    for (key in json.Gujarat.districtData) {
+        				state.insertAdjacentHTML( 'beforeend',"<option value =" + key + ">" + key + "</option>");
+				    }
+				    var city = window.city;
+        			    	var output = json.Gujarat.districtData[city]['active'];
+				        var confirmed  = json.Gujarat.districtData[city]['confirmed'];
+				        var deceased = json.Gujarat.districtData[city]['deceased'];
+				        var recovered = json.Gujarat.districtData[city]['recovered'];
+                    			document.getElementById("active").innerHTML = output;
+                   			document.getElementById("confirmed").innerHTML = confirmed;
+                    			document.getElementById("deceased").innerHTML = deceased;
+                    			document.getElementById("recovered").innerHTML = recovered;}
+			};
+
+  			xhr.send();
+        setTimeout('httpReqGet("https://cors-anywhere.herokuapp.com/https://api.covid19india.org/state_district_wise.json")', 60000);
+		}
+	httpReqGet("https://cors-anywhere.herokuapp.com/https://api.covid19india.org/state_district_wise.json");
+</script>
+
+    <div class="container-fluid text-center" id="dashboard">
+        <script>var currTab = document.getElementById('dashboard')</script>
+        <div class="row content">
+            <div class="col-sm-2 sidenav">
+                <div class="card">
+                    <p>Patient Count</p>
+                    <img src="{% static "/images/icon.png" %}" width="50" height="50">
+                    <p><i class="fa fa-user"></i></p>
+            <div class ="select" style="text-align:left">
+<select id = "sta">
+<option selected value = "Ahmadabad" > Select District:</option>      
+</select>
+</div>
+
+        <table style="width:100%">
+  <tr>
+    <th style="text-align:center"><h3 id="active"></h3></th>
+    <th style="text-align:center"><h3 id="confirmed"></h3></th>
+    </tr>
+  <tr>
+    <th style="text-align:center">Active</th>
+    <th style="text-align:center">Confirmed</th>
+    </tr>
+<tr>
+    <th style="text-align:center"><h3 id="deceased"></h3></th>
+    <th style="text-align:center"><h3 id="recovered"></h3></th>
+  </tr>
+  <tr>
+    <th style="text-align:center">Deceased</th>
+    <th style="text-align:center">Recovered</th>
+  </tr>
+
+  </table>
+
+
+                </div>
+<!--                 <div class="card">
+                    <p><b>Hospitals</b></p>
+                    <p><span>&larr;</span>&nbsp<span>1 of 30</span>&nbsp<span>&rarr;</span></p>
+
+                </div> -->
+            </div>
+
+            <div class="col-sm-8 text-left">
+                <hr>
+                <div id="mapid">
+                </div>
+                <script>map = initMap('mapid'); map.on('draw:created', addPolygon);</script>
+
+            </div>
+            <div class="col-sm-2 sidenav">
+                <div class="slidecontainer" , style="margin-top:20px">
+                    <h4>Nodes</h4>
+                    <div id="node-slider"></div>
+                    <p>Value: <span id="node-handler"></span></p>
+                </div>
+
+                <div class="slidecontainer" , style="margin-top:20px">
+                    <h4>Edge Weight</h4>
+                    <div id="edge-slider"></div>
+                    <p>Value: <span id="edge-handler"></span></p>
+                </div>
+                
+<!--                 <div class="slidecontainer" , style="margin-top:20px">
+                    <button>Apply Changes</button>
+                </div>
+ -->
+<!--                 <div class="slidecontainer" style="margin-top:20px" id="plot-show">
+                    <button>Show Plot</button>
+                </div>
+ -->
+            </div>
+        </div>
+    </div>
+    
+    <div id="spread-model" style="display:none">
+    </div>
+
+    <div id="team" style="display:none;">
+<div class="row">
+  <div class="columna">
+    <div class="card1">
+      <img src="{% static "/images/udit.jpg" %}" width="100%" height="100%">
+      <div class="container1">
+        <h2>Udit Bhatia</h2>
+        <p class="title">Professor</p>
+        <p>IIT Gandhinagar</p>
+        <p>bhatia.u@iitgn.ac.in</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="columna">
+    <div class="card1">
+      <img src="{% static "/images/rohan.jpg" %}" style="width:100%; heigth:100%">
+      <div class="container1">
+        <h2>Rohan Patil</h2>
+        <p class="title">UG Student</p>
+        <p>IIT Gandhinagar</p>
+        <p>rohan.patil@iitgn.ac.in</p>
+<!--         <p><button class="button">Contact</button></p> -->
+      </div>
+    </div>
+  </div>
+  <div class="columna">
+    <div class="card1">
+      <img src="{% static "/images/harsh.jpg" %}" width="100%" height="100%">
+      <div class="container1">
+        <h2>Harsh Patel</h2>
+        <p class="title">UG Student</p>
+        <p>IIT Gandhinagar</p>
+        <p>harsh.patel@iitgn.ac.in</p>
+<!--         <p><button class="button">Contact</button></p> -->
+      </div>
+    </div>
+  </div>
+<div class="columna">
+    <div class="card1">
+      <img src=# style="width:100%">
+      <div class="container1">
+        <h2>Viraj Shah</h2>
+        <p class="title">Student</p>
+        <p>IIT Gandhinagar</p>
+        <p>viraj.shah@iitgn.ac.in</p>
+<!--         <p><button class="button">Contact</button></p> -->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="columna">
+    <div class="card1">
+      <img src=# style="width:100%">
+      <div class="container1">
+        <h2>Raviraj Dave</h2>
+        <p class="title">PhD Student</p>
+        <p>IIT Gandhinagar</p>
+        <p>raviraj.dave@iitgn.ac.in</p>
+<!--         <p><button class="button">Contact</button></p> -->
+      </div>
+    </div>
+  </div>
+
+
+  <div class="columna">
+    <div class="card1">
+      <img src=# style="width:100%">
+      <div class="container1">
+        <h2>Kaushal Modi</h2>
+        <p class="title">Student</p>
+        <p>IIT Gandhinagar</p>
+        <p>kaushal.modi@iitgn.ac.in</p>
+<!--         <p><button class="button">Contact</button></p> -->
+      </div>
+    </div>
+  </div>
+
+    </div>
+    
+    
+    </div>
+    </div>
+</body>
+
+</html>

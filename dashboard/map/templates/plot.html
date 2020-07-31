@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(initialize);
+
+async function httpReq(url, func){
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url, true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function (response) {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        var json = JSON.parse(xhr.responseText);
+        func(json);
+    }
+  };
+  xhr.send();
+}        
+
+function getCovidData(json){
+    var data = json['states_daily'];
+    var dict = {};
+    var maxKey = data.length;
+    var counter = maxKey-21;
+    while(counter<maxKey){
+        dict[data[counter]['date']] = {};
+        counter++;
+    }
+    counter = maxKey-21;
+    while(counter<maxKey){
+        dict[data[counter]['date']][data[counter]['status']] = data[counter]['gj'];
+        counter++;
+    }
+    data = [['Date', 'Confirmed', 'Recovered','Deceased']];
+    for (var date in dict){
+        data.push([
+            date,
+            parseInt(dict[date]['Confirmed']),
+            parseInt(dict[date]['Recovered']),
+            parseInt(dict[date]['Deceased']),]
+            );
+    }
+    console.log(data);
+    createChart(data);
+}        
+
+function createChart(data) {
+    var chart_div = document.getElementById('curve_chart');
+    chart_div.innerHTML = '';
+    var chart_data = google.visualization.arrayToDataTable(data);
+    var chart = new google.visualization.LineChart(chart_div);
+    var options = {
+        title: 'Gujarat Covid-19 Cases',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+    };
+    chart.draw(chart_data, options);
+}
+    </script>
+  </head>
+  <body>
+    <div id="curve_chart" style="width: 250px; height: 250px"></div>
+      <script> httpReq('https://cors-anywhere.herokuapp.com/https://api.covid19india.org/states_daily.json', getCovidData)</script>
+  </body>
+</html>

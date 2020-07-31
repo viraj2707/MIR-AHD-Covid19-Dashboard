@@ -1,0 +1,347 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MIR AHD Covid-19</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static "/style.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" integrity="sha256-sEGfrwMkIjbgTBwGLVK38BG/XwIiNC/EAG9Rzsfda6A=" crossorigin="anonymous" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!--     <link href="nouislider.min.css" rel="stylesheet">
+    <script src="nouislider.min.js"></script>
+     -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="{% static "/map.css" %}"/>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Include this library for mobile touch support  -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+    <script src="{% static "/global.js" %}"></script>
+    <script src="{% static "/helper.js" %}"></script>
+    <script src="{% static "/init.js" %}"></script>
+
+</head>
+
+<body>
+    <div id="loader" class="center" style="display:none;"></div>
+    <div id="loaded" style="min-height:90vh; height:100%;">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img src="{% static "/images/logo.png" %}" width="50" height="50">
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li id="dashboard-tab"><a href="#" onclick="changeTab(this)">MIR AHD Covid-19</a></li>
+                        <li id="model-tab"><a href="#" onclick="changeTab(this)">Epidemic Spread Model</a></li>
+                        <li id="about-tab"><a href="#" onclick="changeTab(this)">About</a></li>
+                        <li id="team-tab"><a href="#" onclick="changeTab(this)">Team</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <script>
+            
+        </script>
+
+        <div class="container-fluid text-center" id="dashboard">
+            <script>
+                var currTab = document.getElementById('dashboard')
+            </script>
+            <div class="row content">
+                <div class="col-sm-3 sidenav">
+                    <div class="card">
+                        <img src="{% static "/images/icon.png" %}" width="50" height="50">
+                        <p><i class="fa fa-user"></i></p>
+                        <div class="select" style="">
+                            <select id="sta">
+                                <option selected value="Ahmedabad"> Select District:</option>
+                            </select>
+                        </div>
+
+                        <table style="width:100%">
+                            <tr>
+                                <th style="text-align:center">
+                                    <h4 id="active"></h4></th>
+                                <th style="text-align:center">
+                                    <h4 id="confirmed"></h4></th>
+                            </tr>
+                            <tr>
+                                <th style="text-align:center">Active</th>
+                                <th style="text-align:center">Confirmed</th>
+                            </tr>
+                            <tr>
+                                <th style="text-align:center">
+                                    <h4 id="deceased"></h4></th>
+                                <th style="text-align:center">
+                                    <h4 id="recovered"></h4></th>
+                            </tr>
+                            <tr>
+                                <th style="text-align:center">Deceased</th>
+                                <th style="text-align:center">Recovered</th>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                    <div id="curve_chart" style="width: 100%; height: 36vh;">If the graph or any other thing did not load, please try refreshing the page</div>
+                </div>
+
+                <div class="col-sm-6 text-left">
+                    <div style="padding: 1.3vh;">
+                        <button onclick="httpReqPost('/get_nodes/', {'key':'S0'}, init_nodes);httpReqPost('/get_edges/', {'key':'S0'}, init_edges);">S 0</button>
+                        <button onclick="httpReqPost('/get_nodes/', {'key':'S1'}, init_nodes);httpReqPost('/get_edges/', {'key':'S1'}, init_edges);">S 1</button>
+                        <button onclick="httpReqPost('/get_nodes/', {'key':'S2'}, init_nodes);httpReqPost('/get_edges/', {'key':'S2'}, init_edges);">S 2</button>
+                    </div>
+                    <div id="mapid">
+                    </div>
+                    <script>
+                        map = initMap('mapid');
+                        map.on('draw:created', addPolygon);
+                    </script>
+
+                </div>
+                <div class="col-sm-3 sidenav">
+                    <div class="slidecontainer" , style="margin-top:20px">
+                        <h4>Road Intersections</h4>
+                        <div id="node-slider"></div>
+                        <p>Value: 
+                            <span id="node-handler">
+<!--                                 <input type="text" style="width:50px;" id="node-handler-min" />
+                                &nbsp; - &nbsp;
+                                <input type="text" style="width:50px;" id="node-handler-max" /> -->
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="slidecontainer" , style="margin-top:20px">
+                        <h4>Road Segments</h4>
+                        <div id="edge-slider"></div>
+                        <p>Value: 
+                            <span id="edge-handler">
+<!--                                 <input type="text" style="width:50px;" id="edge-handler-min" />
+                                &nbsp; - &nbsp;
+                                <input type="text" style="width:50px;" id="edge-handler-max" /> -->
+                            </span>
+                        </p>
+                    </div>
+                    <div class="slidecontainer", style="margin-top:20px">
+                        <h4> Ward Data </h4>
+                        <script>var wardts = {{ wardjs|safe }}</script>
+                        <select onchange="setWardts(this.value)" id="ward-selector">
+                            {% for file in wardts %}
+                            <option value="{{ file }}">{{ file }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div id="ward_chart" style="width: 100%; height: 36vh;"></div>
+                    <script>setWardts(document.getElementById('ward-selector').value);</script>
+                    <br>
+                    <div style="font-size:8px">Ward data obtained from this <a href="https://www.google.com/maps/d/viewer?mid=1Mr5rY_gf66Jy8fJWkUKaE2gH1JRM_kjv&ll=23.018743655174337%2C72.55928039869355&z=12">map</a> created by Piyush Shah, Sustainability, Ahmedabad</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="spread-model" style="display:none" class="container">
+            <div class="row align-items-center" style="margin-left: 2wv;">
+                <div class="col-sm-5">
+                    <h4> Detected Cases </h4>
+                    <select onchange="getImg(this, 'detection')">
+                        <option selected value=""></option>
+                        {% for file in detection %}
+                        <option value="{{ file }}">{{ file }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-sm-5">
+                    <h4>  Detected Cases and undetected infections </h4>
+                    <select onchange="getImg(this, 'detection_tests')">
+                        <option selected value=""></option>
+                        {% for file in detection_testing %}
+                        <option value="{{ file }}">{{ file }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div id="scenario-plot">
+                <img src="" style="width:60%;height:60%;"/>
+            </div>
+            <div>
+                For requesting a scenario run, please use this <a href="https://forms.gle/MNEiXsm7D2qJfnLWA">form</a>
+                <br>
+                In case the above link did not work, please copy this link https://forms.gle/MNEiXsm7D2qJfnLWA in your browser.
+            </div>
+        </div>
+        
+        <div id="about" style="display:none" class="container">
+            <div class="row align-items-center" style="margin: 2wv;">
+                <h2> About the Dashboard </h2>
+                <ul style="list-style-type:disc;">
+                    <li> The dasboard, under the epidemic spread model, shows the different scenarios of infection and detection trajectories under various intervention strategies.</li>
+                    <li> The map helps in identifying the different congestion points at various intersections as lockdown is fully or partially opened.</li>
+                    <li>Model outputs are based on contextual adaptation of SEIR-Plus models developed for modeling disease spread dynamics in the congested cities.</li>
+                    <li>Outputs are based on the current data available from AMC website and Google APIs which provide near-real time trajectory of number of confirmed cases. We keep on training our models as more and more data is available.</li>
+                    <li>If you are a stakeholder or working on the front line and need specific information, please direct your queries to <a href="mailto:bhatia.u@iitgn.ac.in">bhatia.u@iitgn.ac.in</a></li>
+                </ul> 
+            </div>
+        </div>
+
+        <div id="team" style="display:none;" class="container">
+            <hr>
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <div class="card card-block">
+                        <img src="{% static "/images/udit.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Udit Bhatia</h2>
+                            <p class="title">Assistant Professor</p>
+                            <p class="title">Civil Engineering</p>
+                            <p>IIT Gandhinagar</p>
+                            <p>bhatia.u@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h2> Network and Dashboard Development Team </h2>
+            <hr>
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <div class="card card-block">
+                        <img src="{% static "/images/rohan.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Rohan Patil</h2>
+                            <p class="title">B. Tech. Junior Undergraduate</p>
+                            <p class="title">Computer Science and Engineering</p>
+                            <p>IIT Gandhinagar</p>
+                            <p>rohan.patil@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card card-block">
+                        <img src="{% static "/images/harsh.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Harsh Patel</h2>
+                            <p class="title">B. Tech. Sophomore</p>
+                            <p class="title">Computer Science and Engineering</p>
+                            <p>IIT Gandhinagar</p>
+                            <p>harsh.patel@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card card-block align-self-center">
+                        <img src="{% static "/images/viraj.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Viraj Shah</h2>
+                            <p class="title">B. Tech. Sophomore</p>
+                            <p class="title">Electrical Engineering<br><br></p>
+                            <p>IIT Gandhinagar</p>
+                            <p>viraj.shah@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card card-block align-self-center">
+                        <img src="{% static "/images/raviraj.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Raviraj Dave</h2>
+                            <p class="title">PhD Student</p>
+                            <p class="title">Civil Engineering<br><br></p>
+                            <p>IIT Gandhinagar</p>
+                            <p>dave_raviraj@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h2> Dynamic Model Team </h2>
+            <hr>
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <div class="card card-block align-self-center">
+                        <img src="{% static "/images/kaushal.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Kaushal <br> Modi</h2>
+                            <p class="title">B. Tech Senior Undergraduate</p>
+                            <p class="title">Mechanical Engineering</p>
+                            <p>IIT Gandhinagar</p>
+                            <p>kaushal.modi@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card card-block align-self-center">
+                        <img src="{% static "/images/shahzaib.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Shahzaib Khan</h2>
+                            <p class="title">B. Tech Junior Undergraduate</p>
+                            <p class="title">Civil Engineering</p>
+                            <p>IIT Gandhinagar</p>
+                            <p>shahzaib.khan@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card card-block align-self-center">
+                        <img src="{% static "/images/kamlesh.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Kamlesh Sawadekar</h2>
+                            <p class="title">B. Tech Sophomore</p>
+                            <p class="title">Civil Engineering</p>
+                            <p>IIT Gandhinagar</p>
+                            <p>kamlesh.arun@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card card-block">
+                        <img src="{% static "/images/ayush.jpg" %}" style="width:100%;height:160px;"/>
+                        <div class="container1">
+                            <h2>Ayush <br> Lodha</h2>
+                            <p class="title">B. Tech. Sophomore</p>
+                            <p class="title">Civil Engineering</p>
+                            <p>IIT Gandhinagar</p>
+                            <p>ayush.lodha@iitgn.ac.in</p>
+                            <!--         <p><button class="button">Contact</button></p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding-left:1vw;">
+        <img src="{% static "/images/iitgn_logo.png" %}" width="50" height="50">
+        <div style="float:right; padding-top:1.3vh;padding-right:1vw">Dashboard Design: Rohan Patil</div>
+    </div>
+</body>
+
+</html>

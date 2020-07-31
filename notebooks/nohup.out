@@ -1,0 +1,145 @@
+[I 10:15:25.939 NotebookApp] JupyterLab extension loaded from /home/students/Networks/networks/lib/python3.6/site-packages/jupyterlab
+[I 10:15:25.939 NotebookApp] JupyterLab application directory is /home/students/Networks/networks/share/jupyter/lab
+[I 10:15:25.940 NotebookApp] Serving notebooks from local directory: /home/students/Networks/networks/notebooks
+[I 10:15:25.940 NotebookApp] The Jupyter Notebook is running at:
+[I 10:15:25.941 NotebookApp] http://localhost:8999/
+[I 10:15:25.941 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 10:15:37.429 NotebookApp] Kernel started: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 10:15:57.019 NotebookApp] Kernel started: 8b5a6d3b-6a29-4407-b13f-231528543a0d
+[I 10:17:41.095 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 10:17:47.821 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 10:17:48.036 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 10:17:48.851 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 10:17:49.067 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 10:17:49.081 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 10:18:26.001 NotebookApp] Saving file at /testing.ipynb
+[I 10:19:39.168 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 10:21:42.467 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 10:27:41.722 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 10:39:12.071 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 10:39:21.490 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 10:39:30.768 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 10:51:45.502 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 10:53:46.380 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 10:57:47.839 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 10:59:47.779 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 11:00:37.789 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 11:01:45.748 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 11:01:53.583 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 11:02:02.568 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 11:02:12.280 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 11:02:12.475 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 11:02:12.753 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 11:02:12.897 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 11:02:13.268 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 11:02:13.482 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 11:02:46.723 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 11:03:48.149 NotebookApp] Saving file at /testing.ipynb
+[I 11:18:53.732 NotebookApp] Saving file at /testing.ipynb
+[I 11:21:46.672 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 11:25:46.932 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 11:27:47.397 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 11:28:48.536 NotebookApp] Saving file at /testing.ipynb
+[I 11:33:48.118 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 11:34:38.339 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 11:37:48.313 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 11:45:48.667 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 11:51:46.871 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 11:53:47.502 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 12:01:49.008 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 12:05:47.527 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 12:11:49.042 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 12:17:48.027 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 12:18:48.540 NotebookApp] Saving file at /testing.ipynb
+[I 12:19:27.275 NotebookApp] Saving file at /testing.ipynb
+[I 12:19:32.349 NotebookApp] Saving file at /testing.ipynb
+[I 12:19:51.880 NotebookApp] Saving file at /testing.ipynb
+[I 12:19:56.239 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 12:20:31.605 NotebookApp] Saving file at /testing.ipynb
+[I 12:20:49.362 NotebookApp] Saving file at /testing.ipynb
+[I 12:20:57.334 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:20:57.444 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:20:57.596 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:20:57.750 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:20:57.946 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:20:58.033 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:20:58.230 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:20:58.400 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:21:17.792 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:21:17.963 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:21:18.137 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:21:18.317 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:21:18.891 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:21:18.907 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:21:20.953 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:21:21.113 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:21:21.337 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:22:20.704 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 12:22:30.627 NotebookApp] Starting buffering for 0949a908-76d3-4f2c-8d8d-c61602ec5e40:cdb2b6a5e365456290d5c060d0e70eca
+[I 12:22:42.530 NotebookApp] Starting buffering for 0949a908-76d3-4f2c-8d8d-c61602ec5e40:d602d0a0eabd4af0b3219048f0d6afb4
+[I 12:22:47.771 NotebookApp] Kernel restarted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:22:48.442 NotebookApp] Restoring connection for 0949a908-76d3-4f2c-8d8d-c61602ec5e40:d602d0a0eabd4af0b3219048f0d6afb4
+[I 12:24:39.881 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 12:26:39.938 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 12:28:08.920 NotebookApp] Saving file at /testing.ipynb
+[I 12:28:38.563 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 12:30:39.292 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 12:36:40.024 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 12:53:56.804 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:53:57.034 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:53:57.367 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:53:57.382 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:53:57.418 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:53:57.555 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:54:01.431 NotebookApp] Starting buffering for 0949a908-76d3-4f2c-8d8d-c61602ec5e40:d602d0a0eabd4af0b3219048f0d6afb4
+[I 12:54:07.252 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 12:54:16.873 NotebookApp] Discarding 24 buffered messages for 0949a908-76d3-4f2c-8d8d-c61602ec5e40:d602d0a0eabd4af0b3219048f0d6afb4
+[I 12:54:24.838 NotebookApp] Starting buffering for 0949a908-76d3-4f2c-8d8d-c61602ec5e40:d976fe8ee09b4ab786ea62be7de84feb
+[I 12:54:30.036 NotebookApp] Kernel restarted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 12:54:30.593 NotebookApp] Restoring connection for 0949a908-76d3-4f2c-8d8d-c61602ec5e40:d976fe8ee09b4ab786ea62be7de84feb
+[I 12:54:30.594 NotebookApp] Replaying 3 buffered messages
+[I 12:56:20.388 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 12:58:21.131 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 13:01:31.613 NotebookApp] Saving file at /testing.ipynb
+[W 13:03:57.451 NotebookApp] WebSocket ping timeout after 116655 ms.
+[W 13:04:00.594 NotebookApp] WebSocket ping timeout after 119800 ms.
+[I 13:04:02.456 NotebookApp] Starting buffering for 8b5a6d3b-6a29-4407-b13f-231528543a0d:fe875f1d25c0446a90986ba5323cc623
+[I 13:04:05.599 NotebookApp] Starting buffering for 0949a908-76d3-4f2c-8d8d-c61602ec5e40:d976fe8ee09b4ab786ea62be7de84feb
+[I 13:05:00.300 NotebookApp] Restoring connection for 8b5a6d3b-6a29-4407-b13f-231528543a0d:fe875f1d25c0446a90986ba5323cc623
+[I 13:05:20.511 NotebookApp] Starting buffering for 8b5a6d3b-6a29-4407-b13f-231528543a0d:fe875f1d25c0446a90986ba5323cc623
+[I 13:05:50.950 NotebookApp] Restoring connection for 8b5a6d3b-6a29-4407-b13f-231528543a0d:fe875f1d25c0446a90986ba5323cc623
+[I 13:06:02.768 NotebookApp] Restoring connection for 0949a908-76d3-4f2c-8d8d-c61602ec5e40:d976fe8ee09b4ab786ea62be7de84feb
+[I 13:06:23.475 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 13:08:32.873 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 13:08:33.356 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 13:08:34.798 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 13:08:37.832 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 13:08:37.849 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 13:08:37.870 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 13:08:37.885 NotebookApp] Kernel interrupted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 13:08:39.882 NotebookApp] Starting buffering for 0949a908-76d3-4f2c-8d8d-c61602ec5e40:d976fe8ee09b4ab786ea62be7de84feb
+[I 13:09:12.444 NotebookApp] Starting buffering for 0949a908-76d3-4f2c-8d8d-c61602ec5e40:32ca7df613fa4ae5b9b12cbea8dc55eb
+[I 13:09:17.593 NotebookApp] Kernel restarted: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 13:09:18.191 NotebookApp] Restoring connection for 0949a908-76d3-4f2c-8d8d-c61602ec5e40:32ca7df613fa4ae5b9b12cbea8dc55eb
+[I 13:09:18.192 NotebookApp] Replaying 5 buffered messages
+[I 13:09:53.881 NotebookApp] Saving file at /testing.ipynb
+[I 13:11:05.484 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 13:13:06.039 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 13:15:06.197 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 13:18:11.326 NotebookApp] Saving file at /testing.ipynb
+[I 13:19:06.785 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 13:21:05.995 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 13:23:06.243 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 13:26:33.040 NotebookApp] Saving file at /testing.ipynb
+[I 13:29:05.338 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 13:31:06.162 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 13:34:56.887 NotebookApp] Saving file at /testing.ipynb
+[I 13:37:07.246 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 13:39:07.501 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 13:43:10.103 NotebookApp] Saving file at /testing.ipynb
+[I 13:47:27.573 NotebookApp] Saving file at /testing.ipynb
+[I 14:07:11.770 NotebookApp] Saving file at /confi_testing_parallel-IQR.ipynb
+[I 15:02:36.736 NotebookApp] Starting buffering for 8b5a6d3b-6a29-4407-b13f-231528543a0d:fe875f1d25c0446a90986ba5323cc623
+[I 15:02:38.926 NotebookApp] Starting buffering for 0949a908-76d3-4f2c-8d8d-c61602ec5e40:32ca7df613fa4ae5b9b12cbea8dc55eb
+[I 15:02:44.265 NotebookApp] Kernel shutdown: 0949a908-76d3-4f2c-8d8d-c61602ec5e40
+[I 15:02:46.235 NotebookApp] Kernel shutdown: 8b5a6d3b-6a29-4407-b13f-231528543a0d

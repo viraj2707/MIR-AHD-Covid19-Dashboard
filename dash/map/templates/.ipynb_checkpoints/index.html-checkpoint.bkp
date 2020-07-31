@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MIR COID19-Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static "/style.css" %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="nouislider.min.css" rel="stylesheet">
+  <script src="nouislider.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+  <link rel="stylesheet" href="{% static "/map.css" %}"/>  
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <img src="{% static "/images/logo.png" %}" width="50" height="50">
+      </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">MIR COVID-19 Dashboard</a></li>
+        <li><a href="#">Epidemic Spread Model</a></li>
+        <li><a href="#">Team</a></li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul> -->
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="#">Layer-1</a></p>
+      <p><a href="#">Layer-2</a></p>
+      <p><a href="#">Layer-3</a></p>
+      <div class="card">
+        <p>Ahmedabad</p>
+        <img src="{% static "/images/download.jfif" %}" width="50" height="50">
+        <p><i class="fa fa-user"></i></p>
+        <h3>765+</h3>
+        <p>Patient Count</p>
+      </div>
+    </div>
+    
+    <div class="col-sm-8 text-left"> 
+      <hr>
+      <div id="mapid" class="column1"></div>
+      <script src="{% static "/map.js" %}"></script>
+
+      <div class="column2">
+      <h3>Options</h3>
+      <li><a href="#">Reset Polygon</a></li>
+      <li><a href="#">Apply Changes</a></li> </div>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="slidecontainer", style="margin-top:20px">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange1">
+        <p>Value: <span id="x"></span></p>
+        <h3>BC_Rank</h3>
+      </div>
+      <script>
+        var slider1 = document.getElementById("myRange1");
+        var output1 = document.getElementById("x");
+        output1.innerHTML = slider1.value;
+        
+        slider1.oninput = function() {
+          output1.innerHTML = this.value;
+        }
+        </script>
+        
+      &nbsp;
+      <div class="slidecontainer", style="margin-top:20px">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange2">
+        <p>Value: <span id="demo1"></span></p>
+        <h3>Edge_Weight</h3> 
+      </div>
+
+      <script>
+        var slider2 = document.getElementById("myRange2");
+        var output2 = document.getElementById("demo1");
+        output2.innerHTML = slider2.value;
+        
+        slider2.oninput = function() {
+          output2.innerHTML = this.value;
+        }
+        </script>
+    </div>
+  </div>
+</div>
+<!-- 
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer> -->
+</body>
+
+
+</html>

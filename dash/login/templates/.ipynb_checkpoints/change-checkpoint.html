@@ -1,0 +1,33 @@
+{% load static %}
+
+<html>
+<head>
+<link rel="stylesheet" href="l.css">
+<link rel="stylesheet" href="{% static "/l.css" %}"/>
+</head>
+<body>
+    <h1 align = 'center' style="color:white">Change Password Page</h1>
+    <form>
+        <input name="current_password" class="password"  placeholder="Current Password" type="password" minlength="8" required>
+        <input name="new_password" id="new_password" class="password"  placeholder="New Password" type="password" minlength="8" required>
+        <input name="confirm_password" id="confirm_password" class="password"  placeholder="Confirm Password" type="password" minlength="8" required>
+        <a href="/login"><p style="color:white">Back to Login Page</p></a>
+
+        <script> 
+            var password = document.getElementById("new_password")
+                , confirm_password = document.getElementById("confirm_password");
+              
+              function validatePassword(){
+                if(password.value != confirm_password.value) {
+                  confirm_password.setCustomValidity("Passwords Don't Match");
+                } else {
+                  confirm_password.setCustomValidity('');
+                }
+              }
+              password.onchange = validatePassword;
+              confirm_password.onkeyup = validatePassword;
+            </script>
+        <input name="submit" class="btn" type="submit" value="Confirm"/>
+</form>
+</body>
+</html>
